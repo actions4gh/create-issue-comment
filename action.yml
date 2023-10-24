@@ -1,5 +1,9 @@
-name: 'Commit Comment'
+name: 
 description: 'Create a comment for a commit on GitHub'
+
+branding:
+  icon: 'message-square'  
+  color: 'gray-dark'
 inputs:
   token:
     description: 'The GitHub authentication token'
@@ -36,6 +40,9 @@ outputs:
 runs:
   using: 'node20'
   main: 'dist/index.js'
-branding:
-  icon: 'message-square'  
-  color: 'gray-dark'
+runs:
+  using: node20
+  main: _main.mjs
+runs-using-deno:
+  using: deno1
+  main: main.ts
