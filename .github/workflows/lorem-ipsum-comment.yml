@@ -9,11 +9,13 @@ jobs:
       issues: write
     runs-on: ubuntu-latest
     steps:
-      - shell: gh issue comment -R ${{ github.repository }} ${{ github.event.issue.number }} -F {0}
-        run: >
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book.
+      - run: gh issue comment -R "$REPOSITORY" "$NUMBER" -b "$BODY"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          BODY: >
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book.
