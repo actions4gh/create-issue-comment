@@ -1,8 +1,8 @@
-name: 
+name: Create a GitHub comment
 description: 'Create a comment for a commit on GitHub'
 
 branding:
-  icon: 'message-square'  
+  icon: 'message-square'
   color: 'gray-dark'
 inputs:
   token:

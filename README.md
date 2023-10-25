@@ -1,75 +1,89 @@
-# Commit Comment
-[![CI](https://github.com/peter-evans/commit-comment/workflows/CI/badge.svg)](https://github.com/peter-evans/commit-comment/actions?query=workflow%3ACI)
-[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Commit%20Comment-blue.svg?colorA=24292e&colorB=0366d6&style=flat&longCache=true&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAM6wAADOsB5dZE0gAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAERSURBVCiRhZG/SsMxFEZPfsVJ61jbxaF0cRQRcRJ9hlYn30IHN/+9iquDCOIsblIrOjqKgy5aKoJQj4O3EEtbPwhJbr6Te28CmdSKeqzeqr0YbfVIrTBKakvtOl5dtTkK+v4HfA9PEyBFCY9AGVgCBLaBp1jPAyfAJ/AAdIEG0dNAiyP7+K1qIfMdonZic6+WJoBJvQlvuwDqcXadUuqPA1NKAlexbRTAIMvMOCjTbMwl1LtI/6KWJ5Q6rT6Ht1MA58AX8Apcqqt5r2qhrgAXQC3CZ6i1+KMd9TRu3MvA3aH/fFPnBodb6oe6HM8+lYHrGdRXW8M9bMZtPXUji69lmf5Cmamq7quNLFZXD9Rq7v0Bpc1o/tp0fisAAAAASUVORK5CYII=)](https://github.com/marketplace/actions/commit-comment)
+# Create comment
 
-A GitHub action to create a comment for a commit on GitHub.
+➕ Create a new comment on a GitHub Issue, Pull Request, or commit
 
-![Commit Comment Example](https://github.com/peter-evans/commit-comment/blob/main/comment-example.png?raw=true)
+✏️ To edit an existing comment, check out [actions4gh/update-comment] \
+👍 To add a Reaction emoji to a comment, Issue, or Pull Request, check out
+[actions4gh/reactions]
 
 ## Usage
 
-### Add a comment to the current context's commit SHA
-
-The SHA defaults to `github.sha` OR, for `pull_request` events `github.event.pull_request.head.sha`.
+**🚀 Here's what you're after:**
 
 ```yml
-      - name: Create commit comment
-        uses: peter-evans/commit-comment@v3
+on:
+  issues:
+    types: labeled
+jobs:
+  create-comment:
+    if: github.event.label.name == 'help-wanted'
+    permissions:
+      issues: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions4gh/create-comment@v1
         with:
-          body: |
-            This is a multi-line test comment
-            - With GitHub **Markdown** :sparkles:
-            - Created by [commit-comment][1]
-
-            [1]: https://github.com/peter-evans/commit-comment
-          reactions: '+1'
+          body: >
+            This issue is available for anyone to work on. **Make sure to
+            reference this issue in your pull request.** :sparkles: Thank you
+            for your contribution! :sparkles:
 ```
 
-### Update a commit comment
+There are three main targets for comments: GitHub Issues, Pull Requests, and
+commits. By default the target of this action will depend on the type of event
+that triggered it. For `on: issue` triggers it will use the **current Issue**. For
+`on: pull_request` triggers it will use **that Pull Request**. For `on: push` events
+it will use **that commit**. To target the active Pull Request for `on: push` events
+you can **use `pull-request: true`**.
+
+You can target Issues, Pull Requests, and commits explicitly like this:
+
+**✅ Add a comment to an Issue:**
 
 ```yml
-      - name: Update commit comment
-        uses: peter-evans/commit-comment@v3
-        with:
-          comment-id: 557858210
-          body: |
-            **Edit:** Some additional info
-          reactions: eyes
+- uses: actions4gh/create-comment@v1
+  with:
+    issue: ${{ github.event.issue.number }}
+    body: Hello Issue!
 ```
 
-### Add commit comment reactions
+**🔀 Add a comment to a Pull Request:**
 
 ```yml
-      - name: Add reactions
-        uses: peter-evans/commit-comment@v3
-        with:
-          comment-id: 557858210
-          reactions: |
-            heart
-            hooray
-            laugh
+- uses: actions4gh/create-comment@v1
+  with:
+    pull-request: ${{ github.event.pull_request.number }}
+    body: Hello Pull Request!
 ```
 
-## Action inputs
+**📄 Add a comment to a commit:**
 
-| Name | Description | Default |
-| --- | --- | --- |
-| `token` | `GITHUB_TOKEN` or a `repo` scoped [PAT](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token). | `GITHUB_TOKEN` |
-| `repository` | The full name of the target repository. | `github.repository` (current repository) |
-| `sha` | The commit SHA. | `github.sha` OR, for `pull_request` events `github.event.pull_request.head.sha` |
-| `path` | Relative path of the file to comment on. | |
-| `position` | Line index in the diff to comment on. | |
-| `comment-id` | The id of the comment to update. | |
-| `body` | The comment body. Cannot be used in conjunction with `body-path`. | |
-| `body-path` | The path to a file containing the comment body. Cannot be used in conjunction with `body`. | |
-| `edit-mode` | The mode when updating a comment, `replace` or `append`. | `append` |
-| `append-separator` | The separator to use when appending to an existing comment. (`newline`, `space`, `none`) | `newline` |
-| `reactions` | A comma or newline separated list of reactions to add to the comment. (`+1`, `-1`, `laugh`, `confused`, `heart`, `hooray`, `rocket`, `eyes`) | |
-| `reactions-edit-mode` | The mode when updating comment reactions, `replace` or `append`. | `append` |
+```yml
+- uses: actions4gh/create-comment@v1
+  with:
+    commit: ${{ github.sha }}
+    body: Hello commit!
+```
 
-Note: In *public* repositories this action does not work in `pull_request` workflows when triggered by forks.
-Any attempt will be met with the error, `Resource not accessible by integration`.
-This is due to token restrictions put in place by GitHub Actions. Private repositories can be configured to [enable workflows](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#enabling-workflows-for-forks-of-private-repositories) from forks to run without restriction. See [here](https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#restrictions-on-repository-forks) for further explanation. Alternatively, use the [`pull_request_target`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target) event to comment on pull request commits.
+### Inputs
+
+- **`token`:** The GitHub token to use when creating the comment. By default this will use the `github.token`. Make sure your token has permissions to edit Issues, Pull Requests, commits, etc. in order to successfully create the comment!
+
+    <details><summary>Why doesn't it work on Pull Requests from forks?</summary>
+
+    In *public* repositories this action does not work in `pull_request` workflows when triggered by forks.
+    Any attempt will be met with the error, `Resource not accessible by integration`.
+    This is due to token restrictions put in place by GitHub Actions. Private repositories can be configured to [enable workflows from private forks] to run without restriction. See [here](https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#restrictions-on-repository-forks) for further explanation. Alternatively, use the [`pull_request_target`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target) event to comment on pull request commits.
+
+    </details>
+
+- **`repository`:** Which repository to use to dereference the `issue`, `pull-request`, or `commit` inputs. By default this will use the current `github.repository` context.
+
+- **`issue`:**
+
+- **`pull-request`:**
+
+- **`commit`:**
 
 #### Outputs
 
