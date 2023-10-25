@@ -14,12 +14,13 @@
 **🚀 Here's what you're after:**
 
 ```yml
+name: Lorem Ipsum comment
 on:
   issues:
     types: labeled
 jobs:
-  create-comment:
-    if: github.event.label.name == 'lorem-ipsum'
+  lorem-ipsum-comment:
+    if: github.event.label.name == 'lorem ipsum'
     permissions:
       issues: write
     runs-on: ubuntu-latest
@@ -34,7 +35,6 @@ jobs:
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type
             and scrambled it to make a type specimen book.
-
 ```
 
 💡 The GitHub CLI is always provided on all GitHub runners. To install it on

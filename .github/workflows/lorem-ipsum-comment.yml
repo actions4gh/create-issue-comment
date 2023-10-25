@@ -3,8 +3,8 @@ on:
   issues:
     types: labeled
 jobs:
-  create-comment:
-    if: github.event.label.name == 'lorem-ipsum'
+  lorem-ipsum-comment:
+    if: github.event.label.name == 'lorem ipsum'
     permissions:
       issues: write
     runs-on: ubuntu-latest
