@@ -1,5 +1,5 @@
-name: Create a GitHub comment
-description: 'Create a comment for a commit on GitHub'
+name: Create GitHub comment
+description: ➕ Create a new comment on a GitHub Issue, Pull Request, or commit
 
 branding:
   icon: 'message-square'

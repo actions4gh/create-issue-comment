@@ -1,4 +1,4 @@
-# Create comment
+# Create GitHub comment
 
 ➕ Create a new comment on a GitHub Issue, Pull Request, or commit
 
@@ -73,45 +73,27 @@ You can target Issues, Pull Requests, and commits explicitly like this:
 
     In *public* repositories this action does not work in `pull_request` workflows when triggered by forks.
     Any attempt will be met with the error, `Resource not accessible by integration`.
-    This is due to token restrictions put in place by GitHub Actions. Private repositories can be configured to [enable workflows from private forks] to run without restriction. See [here](https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#restrictions-on-repository-forks) for further explanation. Alternatively, use the [`pull_request_target`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target) event to comment on pull request commits.
+    This is due to token restrictions put in place by GitHub Actions. Private repositories can be configured to [enable workflows from private forks] to run without restriction. See [Restrictions on forks] for further explanation. Alternatively, use the [`pull_request_target`](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request_target) event to comment on pull request commits.
 
     </details>
 
 - **`repository`:** Which repository to use to dereference the `issue`, `pull-request`, or `commit` inputs. By default this will use the current `github.repository` context.
 
-- **`issue`:**
+- **`issue`:** A GitHub Issue number identifier like `16` or `2506`. Defaults to the current `github.event.issue.number` if available, otherwise unset.
 
-- **`pull-request`:**
+- **`pull-request`:** A GitHub Pull Request number identifier like `62` or `2274`. Defaults to the current `github.event.pull_request.number` if available, otherwise unset.
 
-- **`commit`:**
+- **`commit`:** A Git SHA commit ID (the **long** SHA) like `e145b5d071eb08a2b2d1b2adc61d68b424eb6e80`. Defaults to `github.sha` if available **when `issue` and `pull-request` are not set**.
 
-#### Outputs
+- **`body`:** A block of Markdown text that will be used as the comment body. Note that newlines **are significant** in GitHub comments. See [yaml-multiline.info] for more info on YAML multiline strings. This will override `body-file`.
 
-The ID of the created comment will be output for use in later steps.
-Note that in order to read the step output the action step must have an id.
+- **`body-file`:** A path to a file that contains the Markdown text that will be used instead of the `body` input. `body` will override `body-file`.
 
-```yml
-      - name: Create commit comment
-        uses: peter-evans/commit-comment@v3
-        id: cc
-        with:
-          body: |
-            My comment
-      - name: Check outputs
-        run: |
-          echo "Comment ID - ${{ steps.cc.outputs.comment-id }}"
-```
+### Outputs
 
-### Setting the comment body from a file
+- **`id`:** The GitHub ID of the comment that was created. This can be used for other comment operations such as adding reactions or editing the comment.
 
-```yml
-      - name: Create commit comment
-        uses: peter-evans/commit-comment@v3
-        with:
-          body-path: 'comment-body.md'
-```
-
-### Using a markdown template
+<!-- ### Using a markdown template
 
 In this example, a markdown template file is added to the repository at `.github/comment-template.md` with the following content.
 ```
@@ -143,4 +125,9 @@ The user associated with the PAT must have write access to the repository.
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) -->
+
+<!-- prettier-ignore-start -->
+[restrictions on forks]: https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#restrictions-on-repository-forks
+[yaml-multiline.info]: https://yaml-multiline.info/
+<!-- prettier-ignore-end -->
