@@ -24,6 +24,7 @@ jobs:
       issues: write
     runs-on: ubuntu-latest
     steps:
+      # prettier-ignore
       - shell: gh issue comment -R ${{ github.repository }} ${{ github.event.issue.number }} -F {0}
         run: >
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -41,9 +42,19 @@ other platforms & images, check out [actions4gh/setup-github-cli].
 gh issue comment {<number> | <url>} [flags]
 ```
 
+**`gh issue comment` options:** <sup>(excerpt)</sup>
+
+- **`-b`, `--body <text>`:** The comment body text
+
+- **`-F`, `--body-file <file>`:** Read body text from file (use "-" to read from
+  standard input)
+
+- 🌟 **`--edit-last`:** Edit the last comment of the same author
+
+- **`-R`, `--repo <[HOST/]OWNER/REPO>`:** Select another repository using the
+  `[HOST/]OWNER/REPO` format
+
 [📚 gh issue comment | GitHub CLI](https://cli.github.com/manual/gh_issue_comment)
 
-<!-- prettier-ignore-start -->
-[restrictions on forks]: https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#restrictions-on-repository-forks
-[yaml-multiline.info]: https://yaml-multiline.info/
-<!-- prettier-ignore-end -->
+[actions4gh/setup-github-cli]:
+  https://github.com/actions4gh/setup-github-cli#readme
