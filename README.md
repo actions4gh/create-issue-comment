@@ -3,7 +3,7 @@
 ➕ Create a new comment on a GitHub Issue
 
 <p align=center>
-  <img src="">
+  <img src="https://i.imgur.com/ZFJpji1.png">
 </p>
 
 👀 To edit ✏️ or react 👍 to an existing GitHub Issue comment, check out
