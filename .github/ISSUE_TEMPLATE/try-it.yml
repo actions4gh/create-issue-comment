@@ -1,0 +1,9 @@
+name: Try it!
+description: Creeate an Issue and get a Lorem Ipsum comment
+title: "Try it!"
+labels: ["lorem ipsum"]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Click "Create issue" and wait ~30s
