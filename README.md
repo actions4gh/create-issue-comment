@@ -14,6 +14,7 @@
 **🚀 Here's what you're after:**
 
 ```yml
+name: Lorem Ipsum comment
 on:
   issues:
     types: labeled
@@ -24,11 +25,11 @@ jobs:
       issues: write
     runs-on: ubuntu-latest
     steps:
-      - run: gh issue comment -R "$REPOSITORY" "$NUMBER" -b "$BODY"
+      - run: gh issue comment "$NUMBER" --repo "$REPO" --body "$BODY"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPOSITORY: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
+          REPO: ${{ github.repository }}
           BODY: >
             Lorem ipsum is placeholder text commonly used in the graphic, print,
             and publishing industries for previewing layouts and visual mockups.
