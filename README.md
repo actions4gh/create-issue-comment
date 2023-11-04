@@ -1,6 +1,6 @@
 # Create GitHub Issue comment
 
-➕ Create a new comment on a GitHub Issue
+💬 Create a new comment on a GitHub Issue
 
 <p align=center>
   <img src="https://i.imgur.com/ZFJpji1.png">
