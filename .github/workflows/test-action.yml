@@ -1,9 +1,9 @@
-name: Lorem Ipsum comment
+name: Test action
 on:
   issues:
     types: labeled
 jobs:
-  lorem-ipsum-comment:
+  test-action:
     if: github.event.label.name == 'lorem ipsum'
     permissions:
       issues: write
@@ -21,3 +21,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NUMBER: ${{ github.event.issue.number }}
+          REPO: ${{ github.repository }}
