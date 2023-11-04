@@ -9,9 +9,6 @@
 👨‍💻 Use the [GitHub CLI](https://cli.github.com/) \
 😱 You don't even need a GitHub Action to do it!
 
-👀 To edit ✏️ an existing GitHub Issue comment, check out
-[actions4gh/update-issue-comment]
-
 ## Usage
 
 **🚀 Here's what you're after:**
@@ -37,6 +34,8 @@ jobs:
             Lorem ipsum is placeholder text commonly used in the graphic, print,
             and publishing industries for previewing layouts and visual mockups.
 ```
+
+[➕ Create a new Issue and try it out!](https://github.com/actions4gh/create-issue-comment/issues/new?assignees=&labels=lorem+ipsum&projects=&template=try-it.yml&title=Try+it%21)
 
 💡 The GitHub CLI is always provided on all GitHub runners. To install it on
 custom runners check out [actions4gh/setup-github-cli].
