@@ -52,7 +52,7 @@ gh issue comment {<number> | <url>} [flags]
 - **`-F`, `--body-file <file>`:** Read body text from file (use "-" to read from
   standard input)
 
-- 🌟 **`--edit-last`:** Edit the last comment of the same author
+- **`--edit-last`:** Edit the last comment of the same author
 
 - **`-R`, `--repo <[HOST/]OWNER/REPO>`:** Select another repository using the
   `[HOST/]OWNER/REPO` format
