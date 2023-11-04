@@ -6,7 +6,10 @@
   <img src="https://i.imgur.com/ZFJpji1.png">
 </p>
 
-👀 To edit ✏️ or react 👍 to an existing GitHub Issue comment, check out
+👨‍💻 Use the [GitHub CLI](https://cli.github.com/) \
+😱 You don't even need a GitHub Action to do it!
+
+👀 To edit ✏️ an existing GitHub Issue comment, check out
 [actions4gh/update-issue-comment]
 
 ## Usage
@@ -36,7 +39,7 @@ jobs:
 ```
 
 💡 The GitHub CLI is always provided on all GitHub runners. To install it on
-other platforms & images, check out [actions4gh/setup-github-cli].
+custom runners check out [actions4gh/setup-github-cli].
 
 ```sh
 gh issue comment {<number> | <url>} [flags]
