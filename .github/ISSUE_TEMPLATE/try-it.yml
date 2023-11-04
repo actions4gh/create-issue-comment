@@ -7,3 +7,8 @@ body:
     attributes:
       value: >
         Click "Create issue" and wait ~30s
+  - type: textarea
+    id: body
+    attributes:
+      label: Body
+      placeholder: "You don't need to type anything here"
