@@ -4,7 +4,7 @@ on:
     types: labeled
 jobs:
   test-action:
-    if: github.event.label.name == 'lorem ipsum'
+    if: github.event.label.name == 'try me'
     permissions:
       issues: write
     runs-on: ubuntu-latest
