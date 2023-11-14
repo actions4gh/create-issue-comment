@@ -1,13 +1,16 @@
-name: publish-action
+name: Update marketplace
 on:
-  release:
-    types: released
+  push:
+    branches: "main"
+    paths:
+      - action.yml
+      - .github/workflows/update-marketplace.yml
 jobs:
-  publish-action:
+  update-marketplace:
     permissions:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/publish-action@v0.2.2
-        with:
-          source-tag: ${{ github.event.release.tag_name }}
+      - uses: actions/checkout@v4
+      - run: git tag marketplace --force
+      - run: git push origin marketplace --force
