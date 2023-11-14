@@ -6,6 +6,10 @@
   <img src="https://i.imgur.com/ZFJpji1.png">
 </p>
 
+<p align=center>
+  <a href="https://github.com/actions4gh/create-issue-comment/issues/new?assignees=&labels=try+me&projects=&template=try-me-.md&title=Try+me%21">Try me!</a>
+</p>
+
 👨‍💻 Use the [GitHub CLI] \
 😱 You don't even need a GitHub Action to do it!
 
@@ -34,8 +38,6 @@ jobs:
             Lorem ipsum is placeholder text commonly used in the graphic, print,
             and publishing industries for previewing layouts and visual mockups.
 ```
-
-[➕ Create a new Issue and try it out!](https://github.com/actions4gh/create-issue-comment/issues/new?assignees=&labels=try+me&projects=&template=try-me-.md&title=Try+me%21)
 
 💡 The GitHub CLI is always provided on all GitHub runners. To install it on
 custom runners check out [actions4gh/setup-gh].
