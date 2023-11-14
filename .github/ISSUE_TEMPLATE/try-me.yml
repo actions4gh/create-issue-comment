@@ -1,12 +1,12 @@
-name: Try it!
-description: Creeate an Issue and get a Lorem Ipsum comment
-title: "Try it!"
-labels: ["lorem ipsum"]
+name: Try me!
+description: Create an Issue and get a Lorem Ipsum comment
+title: "Try me!"
+labels: ["try me"]
 body:
   - type: markdown
     attributes:
       value: >
-        Click "Create issue" and wait ~30s
+        Click "Submit new issue" and wait ~15s
   - type: textarea
     id: body
     attributes:
