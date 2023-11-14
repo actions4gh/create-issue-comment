@@ -6,7 +6,7 @@
   <img src="https://i.imgur.com/ZFJpji1.png">
 </p>
 
-👨‍💻 Use the [GitHub CLI](https://cli.github.com/) \
+👨‍💻 Use the [GitHub CLI] \
 😱 You don't even need a GitHub Action to do it!
 
 ## Usage
@@ -38,7 +38,7 @@ jobs:
 [➕ Create a new Issue and try it out!](https://github.com/actions4gh/create-issue-comment/issues/new?assignees=&labels=try+me&projects=&template=try-me-.md&title=Try+me%21)
 
 💡 The GitHub CLI is always provided on all GitHub runners. To install it on
-custom runners check out [actions4gh/setup-github-cli].
+custom runners check out [actions4gh/setup-gh].
 
 ```sh
 gh issue comment {<number> | <url>} [flags]
@@ -58,7 +58,5 @@ gh issue comment {<number> | <url>} [flags]
 
 [📚 gh issue comment | GitHub CLI](https://cli.github.com/manual/gh_issue_comment)
 
-<!-- prettier-ignore-start -->
-[actions4gh/update-issue-comment]: https://github.com/actions4gh/update-issue-comment#readme
-[actions4gh/setup-github-cli]: https://github.com/actions4gh/setup-github-cli#readme
-<!-- prettier-ignore-end -->
+[github cli]: https://cli.github.com/
+[actions4gh/setup-gh]: https://github.com/actions4gh/setup-gh
