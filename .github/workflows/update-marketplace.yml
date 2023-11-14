@@ -2,9 +2,6 @@ name: Update marketplace
 on:
   push:
     branches: "main"
-    paths:
-      - action.yml
-      - .github/workflows/update-marketplace.yml
 jobs:
   update-marketplace:
     permissions:
