@@ -6,10 +6,6 @@
   <img src="https://i.imgur.com/ZFJpji1.png">
 </p>
 
-<p align=center>
-  <a href="https://github.com/actions4gh/create-issue-comment/issues/new?assignees=&labels=try+me&projects=&template=try-me-.md&title=Try+me%21">Try me!</a>
-</p>
-
 👨‍💻 Use the [GitHub CLI] \
 😱 You don't even need a GitHub Action to do it!
 
